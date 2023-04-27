@@ -1,18 +1,10 @@
 const express = require("express");
+const friendController = require("./controllers/friends.controller")
 const app = express();
 
 const PORT = 4000;
 
 
-const friends = [{
-        'id':0,
-        'name': 'Essam'
-    },
-    {
-        'id':1,
-        'name':"Said"
-    }
-];
 
 app.use((req, res, next) => {
 
@@ -24,28 +16,18 @@ app.use((req, res, next) => {
 
 
     
-})
+});
+
+app.use(express.json());
 
 
-app.get("/friends", (req,res) => {
+app.post("/friends", friendController.postFriend )
 
-    res.json(friends)
-    
-})
+app.get("/friends",friendController.getFriend)
 
-app.get("/friends/:id", (req,res) => {
+app.get("/friends/:id", friendController.getFriendId)
 
-    const friendId = Number(req.params.id)
-    const friend = friends[friendId]
-    if(friend){
-        res.status(200).json(friend);
-    }else{
-        res.status(404).json({
-            error: "Not found"
-        })
-    }
-    
-})
+
 app.get("/", (req,res) => {
     res.send("Essam Said")
 
