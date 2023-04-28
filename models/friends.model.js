@@ -1,10 +1,10 @@
 const friends = [{
-    'id':0,
+    'id': 0,
     'name': 'Essam'
 },
 {
-    'id':1,
-    'name':"Said"
+    'id': 1,
+    'name': "Said"
 }
 ];
 
